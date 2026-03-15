@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Tracker</title>
+
+<style>
+body{
+font-family:Arial;
+background:#f4f6fb;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+width:90%;
+max-width:360px;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.track{
+position:relative;
+height:6px;
+background:#ddd;
+border-radius:10px;
+margin:40px 0;
+}
+
+.progress{
+position:absolute;
+height:6px;
+background:#4CAF50;
+width:0%;
+border-radius:10px;
+}
+
+.truck{
+position:absolute;
+top:-18px;
+font-size:22px;
+}
+
+.steps{
+display:flex;
+justify-content:space-between;
+font-size:13px;
+}
+
+.step{
+text-align:center;
+color:#999;
+}
+
+.active{
+color:#4CAF50;
+font-weight:bold;
+}
+
+.circle{
+width:26px;
+height:26px;
+border-radius:50%;
+background:#ddd;
+margin:auto;
+margin-bottom:6px;
+line-height:26px;
+color:white;
+}
+
+.active .circle{
+background:#4CAF50;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Track Your Order</h2>
+
+<div class="track">
+<div class="progress" id="progress"></div>
+<div class="truck" id="truck">🚚</div>
+</div>
+
+<div class="steps">
+
+<div class="step" id="step1">
+<div class="circle">1</div>
+Processing
+</div>
+
+<div class="step" id="step2">
+<div class="circle">2</div>
+Creating
+</div>
+
+<div class="step" id="step3">
+<div class="circle">3</div>
+Delivered
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/*
+CHANGE THIS NUMBER TO UPDATE ORDER STATUS
+
+1 = Processing
+2 = Creating
+3 = Delivered
+*/
+
+let orderStatus = 1;
+
+const progress = document.getElementById("progress");
+const truck = document.getElementById("truck");
+
+if(orderStatus >= 1){
+document.getElementById("step1").classList.add("active");
+progress.style.width="33%";
+truck.style.left="33%";
+}
+
+if(orderStatus >= 2){
+document.getElementById("step2").classList.add("active");
+progress.style.width="66%";
+truck.style.left="66%";
+}
+
+if(orderStatus >= 3){
+document.getElementById("step3").classList.add("active");
+progress.style.width="100%";
+truck.style.left="95%";
+}
+
+</script>
+
+</body>
+</html>
